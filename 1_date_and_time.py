@@ -1,19 +1,20 @@
-"""
-Домашнее задание №2
+import locale
+from datetime import date, datetime, timedelta
 
-Дата и время
-
-1. Напечатайте в консоль даты: вчера, сегодня, 30 дней назад
-2. Превратите строку "01/01/20 12:10:03.234567" в объект datetime
-
-"""
 
 def print_days():
     """
     Эта функция вызывается автоматически при запуске скрипта в консоли
     В ней надо заменить pass на ваш код
     """
-    pass
+    dt_now = datetime.now()
+    delta_day = timedelta(days=1)
+    delta_mouth = timedelta(days=30)
+    dt_yerstarday = dt_now - delta_day
+    dt_mouth = dt_now - delta_mouth
+    print(f'Вчера было {dt_yerstarday}')
+    print(f'Сегодня {dt_now}')
+    print(f'Месяц назад было {dt_mouth}')
 
 
 def str_2_datetime(date_string):
@@ -21,7 +22,8 @@ def str_2_datetime(date_string):
     Эта функция вызывается автоматически при запуске скрипта в консоли
     В ней надо заменить pass на ваш код
     """
-    pass
+    date_dt = datetime.strptime(date_string, '%d/%m/%y %H:%M:%S.%f')
+    return date_dt
 
 if __name__ == "__main__":
     print_days()

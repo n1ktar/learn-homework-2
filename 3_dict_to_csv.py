@@ -1,21 +1,25 @@
-"""
+import csv
 
-Домашнее задание №2
 
-Работа csv
+dict = [
+        {'name': 'Alex', 'age': 25, 'job': 'Scientist'}, 
+        {'name': 'John', 'age': 8, 'job': 'Programmer'}, 
+        {'name': 'Edward', 'age': 48, 'job': 'Big boss'},
+        {'name': 'Anna', 'age': 27, 'job': 'Manager'}
+    ]
 
-1. Создайте список словарей с ключами name, age и job и значениями по вашему выбору. 
-   В списке нужно создать не менее 4-х словарей
-2. Запишите содержимое списка словарей в файл в формате csv
-
-"""
 
 def main():
     """
     Эта функция вызывается автоматически при запуске скрипта в консоли
     В ней надо заменить pass на ваш код
     """
-    pass
+    with open('dict.csv', 'w', encoding='utf-8', newline='') as f:
+        fields = ['name', 'age', 'job']
+        writer = csv.DictWriter(f, fields, delimiter=';')
+        writer.writeheader()
+        for user in dict:
+            writer.writerow(user)    
 
 if __name__ == "__main__":
     main()
